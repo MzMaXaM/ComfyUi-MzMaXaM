@@ -1,19 +1,25 @@
 # ComfyUi-MzMaXaM
+A pack of nodes, to make my life and hopefully your a bit easier.
 
-# Select Latent Size Node
-
-## Overview
-This repository contains a custom node for ComfyUI designed to generate an empty latent image at predefined resolutions. This node is useful for initializing images for further processing.
-
-## Features
-- **Predefined Resolutions**: Users can select from a list of common resolutions.
-- **User-Friendly Interface**: Easy to use within the ComfyUI environment.
+<img width="1472" alt="image" src="https://github.com/user-attachments/assets/b23b0c69-eda6-49d2-8186-dc842de268d6">
 
 ## Installation
 1. Clone the repository:
     ```sh
     git clone https://github.com/yourusername/yourrepository.git
     ```
+
+# 1. Select Latent Size Node
+
+![image](https://github.com/user-attachments/assets/bb81b4a3-06f1-4793-a663-5b70e600e5c7)
+
+
+## Overview
+A custom node for ComfyUI designed to generate an empty latent image at predefined resolutions. This node is useful for initializing images for further processing.
+
+## Features
+- **Predefined Resolutions**: Users can select from a list of common resolutions.
+- **User-Friendly Interface**: Easy to use within the ComfyUI environment.
 
 ## Usage
 1. Open ComfyUI.
@@ -39,3 +45,23 @@ This repository contains a custom node for ComfyUI designed to generate an empty
 "Smartphone portrait (704x1472) 19x9",
 "Cinema portrait (640x1536) 21x9",
 ```
+
+# 2. Text Encoder 3 in 1
+
+![image](https://github.com/user-attachments/assets/95017521-0be3-4f0d-b162-0f592f3c77aa)
+
+## Overview
+A custom node for ComfyUI designed to use with pony models. It have 2 positive and one negative text encoders.
+2 positives becouse in pony models I always want to keep the scores separate from the prompt.
+2 positive text are concatenated and send over as one conditional.
+
+## Features
+- **2 positive text encoders**: Users can use one for scores while other to change the prompt as they want.
+- **User-Friendly Interface**: Easy to use within the ComfyUI environment.
+
+## Usage
+1. Open ComfyUI.
+2. Add the custom node from the node library.
+3. Insert the prompts.
+4. Select the clip-skip.
+4. Conect outputs to the Sampler.
