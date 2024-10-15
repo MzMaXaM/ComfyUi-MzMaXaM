@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-mzmaxam"
+description = "A pack of nodes, to make my life and hopefully your a bit easier."
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/MzMaXaM/ComfyUi-MzMaXaM"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUi-MzMaXaM"
+Icon = ""
