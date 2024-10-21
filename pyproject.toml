@@ -1,5 +1,5 @@
 [project]
-name = "ComfyUi-MzMaXaM"
+name = "comfyui-mzmaxam"
 description = "A pack of nodes(only 2 for now) to make my life easier and hopefully yours ;)"
 version = "1.0.0"
 license = {file = "LICENSE"}
