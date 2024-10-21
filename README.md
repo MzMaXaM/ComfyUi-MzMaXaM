@@ -6,7 +6,7 @@ A pack of nodes, to make my life and hopefully your a bit easier.
 ## Installation
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/yourrepository.git
+    git clone https://github.com/MzMaXaM/ComfyUi-MzMaXaM.git
     ```
 
 # 1. Select Latent Size Node
