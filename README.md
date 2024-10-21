@@ -8,6 +8,9 @@ A pack of nodes, to make my life and hopefully your a bit easier.
     ```sh
     git clone https://github.com/MzMaXaM/ComfyUi-MzMaXaM.git
     ```
+2. ComfyUi Manager
+
+    ComfyUi Manager/ Custom Nodes Manager/ Search for "mzmaxam"
 
 # 1. Select Latent Size Node
 
