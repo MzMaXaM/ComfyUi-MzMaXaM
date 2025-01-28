@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-mzmaxam"
-description = "A pack of nodes(only 2 for now) to make my life easier and hopefully yours ;)"
-version = "0.0.1"
+description = "A pack of nodes to make my life as an AI artist easier and hopefully yours ;)"
+version = "0.1.1"
 license = {file = "LICENSE"}
 
 [project.urls]
