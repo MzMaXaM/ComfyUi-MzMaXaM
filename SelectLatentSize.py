@@ -34,6 +34,7 @@ class SelectLatentSize1Mp:
                 {
                 "default": "Square (1024x1024) 1x1"
                 }),
+                "batch_size": ("INT", {"default": 1, "min": 1, "max": 10}),
             },
           }
     RETURN_TYPES = ("LATENT",)
@@ -43,8 +44,7 @@ class SelectLatentSize1Mp:
     OUTPUT_NODE = True
     CATEGORY = "MzMaXaM"
     DESCRIPTION = "Select size of a new empty latent image to be denoised via sampling. Name (WidthxHeight) resolution."
-    def return_size(self, resolution):
-        batch_size = 1
+    def return_size(self, resolution, batch_size):
         match = re.search(r'\((\d+)x(\d+)\)', resolution)
         a, b = match.groups()
         width = int(a)
@@ -82,6 +82,7 @@ class SelectLatentSize2Mp:
                 {
                 "default": "Square (1448x1448) 1x1"
                 }),
+                "batch_size": ("INT", {"default": 1, "min": 1, "max": 10}),
             },
           }
     RETURN_TYPES = ("LATENT",)
@@ -89,10 +90,9 @@ class SelectLatentSize2Mp:
     OUTPUT_TOOLTIPS = ("Select the empty latent image resolution. And connect it to the Sampler",)
     FUNCTION = "return_size"
     OUTPUT_NODE = True
-    CATEGORY = "MzMaXaM"
+    CATEGORY = "MzMaXaM/WiP"
     DESCRIPTION = "Select size of a new empty latent image to be denoised via sampling. Name (WidthxHeight) resolution."
-    def return_size(self, resolution):
-        batch_size = 1
+    def return_size(self, resolution, batch_size):
         match = re.search(r'\((\d+)x(\d+)\)', resolution)
         a, b = match.groups()
         width = int(a)
@@ -100,53 +100,12 @@ class SelectLatentSize2Mp:
         latent = torch.zeros([batch_size, 4, height // 8, width // 8], device=self.device)
         return ({"samples":latent}, )
 
-class UpscaleLatentBy1_5x:
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": { "samples": ("LATENT",),
-                              "amount": ("INT", {"default": 1, "min": 1, "max": 10}),
-                              }}
-    RETURN_TYPES = ("LATENT",)
-    FUNCTION = "process_input"
-    CATEGORY = "MzMaXaM"
-
-    def upscale(self, samples, scale_by=1.5, upscale_method="bilinear"):
-        s = samples.copy()
-        width = round(samples["samples"].shape[-1] * scale_by)
-        height = round(samples["samples"].shape[-2] * scale_by)
-        s["samples"] = comfy.utils.common_upscale(samples["samples"], width, height, upscale_method, "disabled")
-        return s
-
-    def repeat(self, samples, amount):
-        if isinstance(samples, tuple):
-            samples = samples[0]
-        s = samples.copy()
-        s_in = samples["samples"]
-
-        s["samples"] = s_in.repeat((amount, 1, 1, 1))
-        if "noise_mask" in samples and samples["noise_mask"].shape[0] > 1:
-            masks = samples["noise_mask"]
-            if masks.shape[0] < s_in.shape[0]:
-                masks = masks.repeat(math.ceil(s_in.shape[0] / masks.shape[0]), 1, 1, 1)[:s_in.shape[0]]
-            s["noise_mask"] = samples["noise_mask"].repeat((amount, 1, 1, 1))
-        if "batch_index" in s:
-            offset = max(s["batch_index"]) - min(s["batch_index"]) + 1
-            s["batch_index"] = s["batch_index"] + [x + (i * offset) for i in range(1, amount) for x in s["batch_index"]]
-        return s
-
-    def process_input(self, samples, amount):
-        upscaled = self.upscale(samples)
-        repeated = self.repeat(upscaled, amount)
-        return (repeated,)
-
 SLS_CLASS_MAPPINGS = {
     "SelectLatentSize1MP": SelectLatentSize1Mp,
     "SelectLatentSize2MP": SelectLatentSize2Mp,
-    "UpscaleLatentBy1_5x": UpscaleLatentBy1_5x,
 }
 
 SLS_NAME_MAPPINGS = {
     "SelectLatentSize1MP": "Select latent size 1Mp",
     "SelectLatentSize2MP": "Select latent size 2Mp",
-    "UpscaleLatentBy1_5x": "Upscale Latent by 1.5x",
 }
