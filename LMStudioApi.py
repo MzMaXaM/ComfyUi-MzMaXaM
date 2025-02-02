@@ -79,7 +79,7 @@ class TextToText:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("Generated Text",)
     FUNCTION = "generate_text"
-    CATEGORY = "MzMaXaM"
+    CATEGORY = "MzMaXaM/WiP"
 
     def generate_text(self, prompt, model, ip_address, port, seed, max_tokens=100, temperature=0.7):
         if seed == -1:
@@ -117,6 +117,6 @@ LMS_CLASS_MAPPINGS = {
 }
 
 LMS_NAME_MAPPINGS = {
-    "ImageToText": "Image to Text",
-    "TextToText": "Text to Text",
+    "ImageToText": "Image to Text LMStudio",
+    "TextToText": "Text to Text LMStudio",
 }
