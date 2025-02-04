@@ -9,31 +9,33 @@ from PIL import Image
 from ollama import chat
 from ollama import ChatResponse
 
-# Fetch the list of installed models from the API
-# http://localhost:11434/api/tags
-# llava-phi3:latest
-# bakllava:latest
-
+@staticmethod
 def get_installed_models():
     # Fetch the list of installed models from the API
     response = requests.get("http://localhost:11434/api/tags")
     if response.status_code == 200:
         models_data = response.json()
         models = [model["name"] for model in models_data["models"]]
-        print(models)
         return models
     else:
         raise ValueError("Failed to fetch installed models")
 
 class ImageToTextOllama:
+    PRESET_PROMPTS = {
+        "Tags Only": "Describe the image with tags only. The tags should be descriptive and relevant to the image, for example: 'sunset, beach, ocean, waves, sky, clouds, horizon, dusk, evening, nature'. Only use tags that describe the image. Do not use special characters in the tags.",
+        "More Tags": "Describe the image using tags separated by commas, no less than 10 tags no more than 20 tags separated by comas. The tags should be descriptive and relevant to the image, for example: 'sunset, beach, ocean, waves, sky, clouds, horizon, dusk, evening, nature'. Only use tags that describe the image. Do not use special characters in the tags.",
+        "Short Description": "Provide a short description of this image",
+        "Long Description": "Artisticly describe this image in detail"
+    }
+
     @classmethod
     def INPUT_TYPES(cls):
-        models = cls.get_installed_models()
+        models = get_installed_models()
         return {
             "required": {
                 "image": ("IMAGE",),
-                "prompt": ("STRING", {"default": "Describe this image in detail"}),
-                "model": ("STRING", {"default": models[0], "choices": models}),
+                "prompt": (list(cls.PRESET_PROMPTS.keys()),),
+                "model": (models,),
                 "seed": ("INT", {"default": 1, "min": -1, "max": 0xffffffffffffffff}),
             }
         }
@@ -41,19 +43,7 @@ class ImageToTextOllama:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("Description",)
     FUNCTION = "process_image"
-    CATEGORY = "MzMaXaM/WiP"
-    
-    @staticmethod
-    def get_installed_models():
-        # Fetch the list of installed models from the API
-        response = requests.get("http://localhost:11434/api/tags")
-        if response.status_code == 200:
-            models_data = response.json()
-            models = [model["name"] for model in models_data["models"]]
-            print(models)
-            return models
-        else:
-            raise ValueError("Failed to fetch installed models")
+    CATEGORY = "MzMaXaM"
 
     def process_image(self, image, prompt, model, seed):
         if seed == -1:
@@ -69,7 +59,7 @@ class ImageToTextOllama:
             response: ChatResponse = chat(model, messages=[
                 {
                     'role': 'user',
-                    'content': prompt + ' Json output is preferred.',
+                    'content': prompt, #+ ' Json output is preferred.',
                     'images': [base64_image],
                 },
             ])
@@ -96,7 +86,7 @@ class TextToTextOllama:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("Generated Text",)
     FUNCTION = "generate_text"
-    CATEGORY = "MzMaXaM/WiP"
+    CATEGORY = "MzMaXaM"
 
     def generate_text(self, prompt, model, seed):
         if seed == -1:
@@ -119,11 +109,11 @@ class TextToTextOllama:
 
         
 OLMS_CLASS_MAPPINGS = {
-    "ImageToText": ImageToTextOllama,
-    "TextToText": TextToTextOllama,
+    "OllamaImageToText": ImageToTextOllama,
+    "OllamaTextToText": TextToTextOllama,
 }
 
 OLMS_NAME_MAPPINGS = {
-    "ImageToText": "Image to Text Ollama",
-    "TextToText": "Text to Text Ollama",
+    "OllamaImageToText": "Image to Text Ollama",
+    "OllamaTextToText": "Text to Text Ollama",
 }

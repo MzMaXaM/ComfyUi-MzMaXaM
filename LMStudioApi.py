@@ -112,11 +112,11 @@ class TextToText:
             return (error_message,)
         
 LMS_CLASS_MAPPINGS = {
-    "ImageToText": ImageToText,
-    "TextToText": TextToText,
+    "LmsImageToText": ImageToText,
+    "LmsTextToText": TextToText,
 }
 
 LMS_NAME_MAPPINGS = {
-    "ImageToText": "Image to Text LMStudio",
-    "TextToText": "Text to Text LMStudio",
+    "LmsImageToText": "Image to Text LMStudio",
+    "LmsTextToText": "Text to Text LMStudio",
 }

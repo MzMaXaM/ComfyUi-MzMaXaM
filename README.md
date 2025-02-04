@@ -112,13 +112,13 @@ A custom node for ComfyUI designed to generate an empty latent image at predefin
 # 4. Upscale Latent/Image by 1.5
 
 ## Overview
-I created this node for my workflows in which I'm using 16:9 resolution and 
-from (1280x720) 16x9 it's exactly 1,5 smaller than (1080x1920) 16x9
+I created this node for my workflows in which I'm using 16:9 resolution, and 
+from (1280x720) 16x9, it's exactly 1.5 times smaller than (1080x1920) 16x9
 
 That's why I made it :D
 
 ## Features
-- upscale latent by 1,5 for next Hi-Rez
+- upscale latent by 1.5 for the next Hi-Rez
 - amount to duplicate IMG n times so you can choose the one you like 
 
 ## Usage
@@ -126,9 +126,16 @@ That's why I made it :D
 2. Add the custom node from the node library.
 3. Insert the latent image.
 4. Select the amount you want, default is 1.
-4. Conect output to the Sampler.
+4. Connect output to the Sampler.
 
 
 
-# WiP(Work in progress)
-I'm working on a node that with the help of an local llm would generate prompts
+# Image to Text Ollama
+Worked on a node that would send the input image to the local Ollama Models.
+You have to Install Ollama and add Visual Models for it to work.
+As of today I can recommend minicpm Model
+Bear in mind that the LLM model will eat resources...
+
+# Text to Text Ollama
+As the name suggests this node should generate a prompt for you from the prompt you'll give it :D
+Don't forget that LLM models eat your resources.
