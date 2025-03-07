@@ -43,7 +43,7 @@ class ImageToTextOllama:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("Description",)
     FUNCTION = "process_image"
-    CATEGORY = "MzMaXaM"
+    CATEGORY = "MzMaXaM/WiP/Ollama"
 
     def process_image(self, image, prompt, model, seed):
         if seed == -1:
@@ -86,7 +86,7 @@ class TextToTextOllama:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("Generated Text",)
     FUNCTION = "generate_text"
-    CATEGORY = "MzMaXaM"
+    CATEGORY = "MzMaXaM/WiP/Ollama"
 
     def generate_text(self, prompt, model, seed):
         if seed == -1:

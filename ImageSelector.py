@@ -14,7 +14,7 @@ class ChooserImageDialog:
         self.node = node
 
 class ImageChooser:
-    CATEGORY = "MzMaXaM/WiP"
+    CATEGORY = "MzMaXaM/WiP/ImageSelector"
     DESCRIPTION = "Choose images to process and connect them to the next node."
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("Image",)

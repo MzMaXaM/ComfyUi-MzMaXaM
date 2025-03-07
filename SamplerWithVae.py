@@ -2,7 +2,7 @@ import re
 import math
 import torch
 import latent_preview
-import comfy.model_management
+import comfy
 from typing import Tuple, Dict
 
 def common_ksampler(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent, denoise=1.0, disable_noise=False, start_step=None, last_step=None, force_full_denoise=False):

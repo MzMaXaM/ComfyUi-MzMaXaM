@@ -24,7 +24,7 @@ class ImageToText:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("Description",)
     FUNCTION = "process_image"
-    CATEGORY = "MzMaXaM/WiP"
+    CATEGORY = "MzMaXaM/WiP/LMS"
 
     def process_image(self, image, user_prompt, model, ip_address, port, seed):
         if seed == -1:
@@ -79,7 +79,7 @@ class TextToText:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("Generated Text",)
     FUNCTION = "generate_text"
-    CATEGORY = "MzMaXaM/WiP"
+    CATEGORY = "MzMaXaM/WiP/LMS"
 
     def generate_text(self, prompt, model, ip_address, port, seed, max_tokens=100, temperature=0.7):
         if seed == -1:
