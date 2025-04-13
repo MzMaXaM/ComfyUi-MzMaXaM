@@ -128,14 +128,3 @@ That's why I made it :D
 4. Select the amount you want, default is 1.
 4. Connect output to the Sampler.
 
-
-
-# Image to Text Ollama
-Worked on a node that would send the input image to the local Ollama Models.
-You have to Install Ollama and add Visual Models for it to work.
-As of today I can recommend minicpm Model
-Bear in mind that the LLM model will eat resources...
-
-# Text to Text Ollama
-As the name suggests this node should generate a prompt for you from the prompt you'll give it :D
-Don't forget that LLM models eat your resources.
