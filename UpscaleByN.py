@@ -1,5 +1,5 @@
 import math
-import comfy.model_management
+import comfy
 from typing import Tuple, Dict
 
 def repeat(samples, amount):

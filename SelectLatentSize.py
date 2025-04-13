@@ -1,7 +1,7 @@
 import re
 import math
 import torch
-import comfy.model_management
+import comfy
 from typing import Tuple, Dict
 
 class SelectLatentSize1Mp:

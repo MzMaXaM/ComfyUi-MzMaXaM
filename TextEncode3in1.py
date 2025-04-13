@@ -25,7 +25,7 @@ class TextEncode3in1:
                     "multiline": True, 
                     "dynamicPrompts": True, 
                     "tooltip": "The negative text to be encoded.",
-                    "default": "score_5, score_4, worst quality, low quality, text, censored, deformed, bad hand, blurry, (watermark), weights, extra hands, extra dicks. 3 finger, bad anatomy, big head, artist signature, artist name"
+                    "default": "score_5, score_4, worst quality, low quality, text, censored, deformed, bad hand, blurry, (watermark), weights, extra hands, 3 finger, bad anatomy, big head, artist signature, artist name"
                 })
             }
         }
