@@ -1,4 +1,4 @@
-import comfy
+import comfy # type: ignore
 
 class TextEncode3in1:
     def __init__(self):

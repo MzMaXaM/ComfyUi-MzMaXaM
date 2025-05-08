@@ -1,0 +1,133 @@
+{
+    "1:1 Square Format": [
+        "Divisible by 64 512x512",
+        "Divisible by 64 576x576",
+        "Divisible by 64 640x640",
+        "Divisible by 64 704x704",
+        "Divisible by 64 768x768",
+        "Divisible by 64 832x832",
+        "Divisible by 64 896x896",
+        "Divisible by 64 960x960",
+        "Divisible by 64 1024x1024",
+        "Divisible by 64 1088x1088",
+        "Divisible by 64 1152x1152",
+        "Divisible by 64 1216x1216",
+        "Divisible by 64 1280x1280",
+        "Divisible by 64 1344x1344",
+        "Divisible by 64 1920x1920"
+    ],
+    "3:4 Portrait Photography, Retro CRT TV & Monitor": [
+        "Divisible by 64 576x768",
+        "Divisible by 64 768x576",
+        "Divisible by 64 768x1024",
+        "Divisible by 64 960x1280",
+        "Divisible by 64 1024x768",
+        "Divisible by 8 1088x1472",
+        "Divisible by 8 1472x1088",
+        "Divisible by 64 1152x1536",
+        "Divisible by 64 1280x960",
+        "Divisible by 64 1440x1920",
+        "Divisible by 64 1536x1152",
+        "Divisible by 64 1920x1440"
+    ],
+    "4:5 Instagram Portrait": [
+        "Divisible by 64 768x960",
+        "Divisible by 64 960x768",
+        "Divisible by 64 1024x1280",
+        "Divisible by 64 1216x1536",
+        "Divisible by 64 1280x1024",
+        "Divisible by 64 1280x1600",
+        "Divisible by 64 1536x1216",
+        "Divisible by 64 1536x1920",
+        "Divisible by 64 1600x1280",
+        "Divisible by 64 1920x1536"
+    ],
+    "2:3 Standard Photography": [
+        "Divisible by 64 512x768",
+        "Divisible by 64 768x512",
+        "Divisible by 64 768x1152",
+        "Divisible by 64 896x1344",
+        "Divisible by 64 1024x1536",
+        "Divisible by 64 1152x768",
+        "Divisible by 64 1152x1728",
+        "Divisible by 64 1280x1920",
+        "Divisible by 64 1344x896",
+        "Divisible by 64 1536x1024",
+        "Divisible by 64 1728x1152",
+        "Divisible by 64 1920x1280"
+    ],
+    "1.42:1 Trading Cards of all sorts": [
+        "Divisible by 64 768x1088",
+        "Divisible by 64 960x1344",
+        "Divisible by 64 1088x768",
+        "Divisible by 64 1344x960",
+        "Divisible by 8 1920x1352"
+    ],
+    "16:9 Smartphone Screen": [
+        "Divisible by 64 576x1024",
+        "Divisible by 64 640x1152",
+        "Divisible by 64 768x768",
+        "Divisible by 64 768x1344",
+        "Divisible by 64 832x1472",
+        "Divisible by 64 896x1536",
+        "Divisible by 64 960x1728",
+        "Divisible by 64 1024x576",
+        "Divisible by 64 1080x1920",
+        "Divisible by 64 1152x648",
+        "Divisible by 64 1280x720",
+        "Divisible by 64 1344x768",
+        "Divisible by 64 1472x832",
+        "Divisible by 64 1536x864",
+        "Divisible by 64 1664x936",
+        "Divisible by 64 1728x960",
+        "Divisible by 64 1920x1080"
+    ],
+    "1.85:1 Cinematic Widescreen": [
+        "Divisible by 64 512x960",
+        "Divisible by 8 540x1024",
+        "Divisible by 64 576x1088",
+        "Divisible by 64 640x1216",
+        "Divisible by 64 960x512",
+        "Divisible by 64 960x1792",
+        "Divisible by 64 1024x1920",
+        "Divisible by 8 1024x544",
+        "Divisible by 64 1088x576",
+        "Divisible by 64 1216x640",
+        "Divisible by 64 1536x832",
+        "Divisible by 64 1792x960",
+        "Divisible by 64 1920x1024"
+    ],
+    "21:9 UltraWide Monitor": [
+        "Divisible by 64 768x768",
+        "Divisible by 64 768x1856",
+        "Divisible by 64 800x1920",
+        "Divisible by 64 896x2176",
+        "Divisible by 64 1856x768",
+        "Divisible by 64 1920x800",
+        "Divisible by 64 2176x896"
+    ],
+    "3:1 Panoramic Photography": [
+        "Divisible by 64 1536x512",
+        "Divisible by 64 1728x576",
+        "Divisible by 64 1920x640"
+    ],
+    "32:9 Super UltraWide Monitor": [
+        "Divisible by 64 512x1856",
+        "Divisible by 8 540x1920",
+        "Divisible by 64 576x2048",
+        "Divisible by 64 640x2240",
+        "Divisible by 64 704x2496",
+        "Divisible by 64 1856x512",
+        "Divisible by 64 1920x544",
+        "Divisible by 64 2048x576",
+        "Divisible by 64 2240x640",
+        "Divisible by 64 2496x704"
+    ],
+    "4:1 Panoramic Photography": [
+        "Divisible by 64 1920x480",
+        "Divisible by 64 2048x512",
+        "Divisible by 64 2304x576",
+        "Divisible by 64 2560x640",
+        "Divisible by 64 2816x704"
+    ]
+}

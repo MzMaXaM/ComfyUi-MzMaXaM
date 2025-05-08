@@ -1,7 +1,7 @@
 import re
 import math
-import torch
-import comfy
+import torch # type: ignore
+import comfy # type: ignore
 from typing import Tuple, Dict
 
 class SelectLatentSize1Mp:
