@@ -15,34 +15,63 @@ app.registerExtension({
             }
             // Our resolution mapping must mirror the backend mapping exactly.
             const resolutionMapping = {
-                "Square Format Photography (1:1)": [
-                    "1920x1920",
-                    "3840x3840",
-                    "7680x7680",
-                    "1344x1344",
-                    "1280x1280",
-                    "1216x1216",
-                    "1152x1152",
-                    "1088x1088",
-                    "1024x1024",
-                    "960x960",
-                    "896x896",
-                    "832x832",
-                    "768x768",
-                    "704x704",
-                    "640x640",
-                    "576x576",
-                    "512x512"
+                "1:1 Square Format": [
+                    "Divisible by 64 512x512",
+                    "Divisible by 64 576x576",
+                    "Divisible by 64 640x640",
+                    "Divisible by 64 704x704",
+                    "Divisible by 64 768x768",
+                    "Divisible by 64 832x832",
+                    "Divisible by 64 896x896",
+                    "Divisible by 64 960x960",
+                    "Divisible by 64 1024x1024",
+                    "Divisible by 64 1088x1088",
+                    "Divisible by 64 1152x1152",
+                    "Divisible by 64 1216x1216",
+                    "Divisible by 64 1280x1280",
+                    "Divisible by 64 1344x1344",
+                    "Divisible by 64 1920x1920"
                 ],
-                "Horizontal Portrait Photography (4:5)": [
-                    "1920x1536",
-                    "3840x3072",
-                    "7680x6144",
-                    "1600x1280",
-                    "1536x1216",
-                    "1280x1024",
-                    "960x768"
-                ]
+                "3:4 Portrait Photography, Retro CRT TV & Monitor": [
+                    "Divisible by 64 576x768",
+                    "Divisible by 64 768x576",
+                    "Divisible by 64 768x1024",
+                    "Divisible by 64 960x1280",
+                    "Divisible by 64 1024x768",
+                    "Divisible by 8 1088x1472",
+                    "Divisible by 8 1472x1088",
+                    "Divisible by 64 1152x1536",
+                    "Divisible by 64 1280x960",
+                    "Divisible by 64 1440x1920",
+                    "Divisible by 64 1536x1152",
+                    "Divisible by 64 1920x1440"
+                ],
+                "4:5 Instagram Portrait": [
+                    "Divisible by 64 768x960",
+                    "Divisible by 64 960x768",
+                    "Divisible by 64 1024x1280",
+                    "Divisible by 64 1216x1536",
+                    "Divisible by 64 1280x1024",
+                    "Divisible by 64 1280x1600",
+                    "Divisible by 64 1536x1216",
+                    "Divisible by 64 1536x1920",
+                    "Divisible by 64 1600x1280",
+                    "Divisible by 64 1920x1536"
+                ],
+                "2:3 Standard Photography": [
+                    "Divisible by 64 512x768",
+                    "Divisible by 64 768x512",
+                    "Divisible by 64 768x1152",
+                    "Divisible by 64 896x1344",
+                    "Divisible by 64 1024x1536",
+                    "Divisible by 64 1152x768",
+                    "Divisible by 64 1152x1728",
+                    "Divisible by 64 1280x1920",
+                    "Divisible by 64 1344x896",
+                    "Divisible by 64 1536x1024",
+                    "Divisible by 64 1728x1152",
+                    "Divisible by 64 1920x1280",
+        ]
             };
             // This function updates the options in the resolution dropdown widget
             function updateResolutionOptions() {
