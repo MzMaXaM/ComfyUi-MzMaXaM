@@ -4,64 +4,151 @@ import comfy  # type: ignore
 class newLatentAdvanced:
     # Resolution mapping for the two aspect ratios
     resolution_mapping = {
-        "1:1 Square Format": [
-            "Divisible by 64 512x512",
-            "Divisible by 64 576x576",
-            "Divisible by 64 640x640",
-            "Divisible by 64 704x704",
-            "Divisible by 64 768x768",
-            "Divisible by 64 832x832",
-            "Divisible by 64 896x896",
-            "Divisible by 64 960x960",
-            "Divisible by 64 1024x1024",
-            "Divisible by 64 1088x1088",
-            "Divisible by 64 1152x1152",
-            "Divisible by 64 1216x1216",
-            "Divisible by 64 1280x1280",
-            "Divisible by 64 1344x1344",
-            "Divisible by 64 1920x1920"
-        ],
-        "3:4 Portrait Photography, Retro CRT TV & Monitor": [
-            "Divisible by 64 576x768",
-            "Divisible by 64 768x576",
-            "Divisible by 64 768x1024",
-            "Divisible by 64 960x1280",
-            "Divisible by 64 1024x768",
-            "Divisible by 8 1088x1472",
-            "Divisible by 8 1472x1088",
-            "Divisible by 64 1152x1536",
-            "Divisible by 64 1280x960",
-            "Divisible by 64 1440x1920",
-            "Divisible by 64 1536x1152",
-            "Divisible by 64 1920x1440"
-        ],
-        "4:5 Instagram Portrait": [
-            "Divisible by 64 768x960",
-            "Divisible by 64 960x768",
-            "Divisible by 64 1024x1280",
-            "Divisible by 64 1216x1536",
-            "Divisible by 64 1280x1024",
-            "Divisible by 64 1280x1600",
-            "Divisible by 64 1536x1216",
-            "Divisible by 64 1536x1920",
-            "Divisible by 64 1600x1280",
-            "Divisible by 64 1920x1536"
-        ],
-        "2:3 Standard Photography": [
-            "Divisible by 64 512x768",
-            "Divisible by 64 768x512",
-            "Divisible by 64 768x1152",
-            "Divisible by 64 896x1344",
-            "Divisible by 64 1024x1536",
-            "Divisible by 64 1152x768",
-            "Divisible by 64 1152x1728",
-            "Divisible by 64 1280x1920",
-            "Divisible by 64 1344x896",
-            "Divisible by 64 1536x1024",
-            "Divisible by 64 1728x1152",
-            "Divisible by 64 1920x1280"
-        ]
-    }
+                "1:1 Square Format": [
+                    "512x512",
+                    "576x576",
+                    "640x640",
+                    "704x704",
+                    "768x768",
+                    "832x832",
+                    "896x896",
+                    "960x960",
+                    "1024x1024",
+                    "1088x1088",
+                    "1152x1152",
+                    "1216x1216",
+                    "1280x1280",
+                    "1344x1344",
+                    "1920x1920"
+                ],
+                "4:5 Portrait Photography": [
+                    "512x640",
+                    "576x720",
+                    "768x960",
+                    "1024x1280",
+                    "1216x1536",
+                    "1280x1600",
+                    "1536x1920"
+                ],
+                "3:4 Retro CRT TV & Monitor": [
+                    "576x768",
+                    "640x768",
+                    "704x896",
+                    "768x1024",
+                    "960x1280",
+                    "1088x1472",
+                    "1152x1536",
+                    "1440x1920"
+                ],
+                "2:3 Standard Photography": [
+                    "512x768",
+                    "576x864",
+                    "640x960",
+                    "704x1088",
+                    "768x1152",
+                    "832x1280",
+                    "896x1344",
+                    "960x1536",
+                    "1024x1536",
+                    "1152x1728",
+                    "1280x1920"
+                ],
+                "7:10 Trading Cards of all sorts": [
+                    "512x728",
+                    "576x816",
+                    "640x912",
+                    "704x1008",
+                    "768x1088",
+                    "960x1344",
+                    "1352x1920"
+                ],
+                "5:8 Expanded Portrait": [
+                    "512x640",
+                    "576x720",
+                    "640x800",
+                    "704x1152",
+                    "768x1280",
+                    "832x1408",
+                    "960x1664",
+                    "1024x1792",
+                    "1088x1920"
+                ],
+                "7:12 Tall Vista":[
+                     "512x896",
+                    "576x1008",
+                    "640x1120",
+                    "704x1232",
+                    "768x1344",
+                    "832x1456",
+                    "896x1536",
+                    "960x1680"
+                ],
+                "9:16 Smartphone Screen": [
+                    "576x1024",
+                    "640x1152",
+                    "720x1280",
+                    "768x1408",
+                    "832x1472",
+                    "960x1728",
+                    "1080x1920"
+                ],
+                "1:1.85 Cinematic Widescreen": [
+                    "512x960",
+                    "540x1024",
+                    "576x1088",
+                    "640x1216",
+                    "704x1344",
+                    "768x1472",
+                    "832x1536",
+                    "960x1792",
+                    "1024x1920"
+                ],
+                "1:2 Two Fold": [
+                    "512x1024",
+                    "576x1152",
+                    "640x1280",
+                    "704x1408",
+                    "768x1536",
+                    "832x1664",
+                    "896x1792",
+                    "960x1920",
+                    "1024x2048"
+                ],
+                "9:21 UltraWide Monitor": [
+                    "512x1152",
+                    "576x1280",
+                    "768x1856",
+                    "800x1920",
+                    "896x2176"
+                ],
+                "1:3 Panoramic Photography": [
+                    "512x1536",
+                    "576x1728",
+                    "640x1920"
+                ],
+                "9:32 Super UltraWide Monitor": [
+                    "512x1856",
+                    "540x1920",
+                    "576x2048",
+                    "640x2240",
+                    "704x2496"
+                ],
+                "1:4 Panoramic Photography": [
+                    "480x1920",
+                    "512x2048",
+                    "576x2304",
+                    "640x2560",
+                    "704x2816"
+                ],
+                "1:5 Super Panoramic Photography": [
+                    "512x2560",
+                    "576x2816",
+                    "640x3072",
+                    "704x3328",
+                    "768x3584",
+                    "832x3840"
+                ]
+            }
     default_aspect_ratio = "1:1 Square Format"
     def __init__(self):
         self.device = comfy.model_management.intermediate_device()
@@ -74,7 +161,8 @@ class newLatentAdvanced:
                     {"default": cls.default_aspect_ratio},
                 ),
                 "resolution": (
-                    list(cls.resolution_mapping["1:1 Square Format"] + cls.resolution_mapping["3:4 Portrait Photography, Retro CRT TV & Monitor"] + cls.resolution_mapping["4:5 Instagram Portrait"] + cls.resolution_mapping["2:3 Standard Photography"]),
+                    # list(cls.resolution_mapping["1:1 Square Format"] + cls.resolution_mapping["3:4 Portrait Photography, Retro CRT TV & Monitor"] + cls.resolution_mapping["4:5 Instagram Portrait"] + cls.resolution_mapping["2:3 Standard Photography"]),
+                    sum(list(cls.resolution_mapping.values()), []),
                     {"default": cls.resolution_mapping[cls.default_aspect_ratio][0]},
                 ),
                 "swap_orientation": (["enable", "disable"], {"default": "disable"}),
@@ -111,7 +199,7 @@ class newLatentAdvanced:
         if batch_size <= 0:
             # This check remains important
             raise ValueError("Batch size must be a positive integer.")
-        # Validate dimensions are divisible by 8 (essential for latent space)
+        # Validate dimensions are (essential for latent space)
         if width % 8 != 0 or height % 8 != 0:
             print(f"Warning: Resolution {width}x{height} is not divisible by 8. Rounding down to nearest multiple of 8.")
             width = (width // 8) * 8
