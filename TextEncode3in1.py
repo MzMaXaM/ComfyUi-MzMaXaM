@@ -8,20 +8,22 @@ class TextEncode3in1:
         return {
             "required": {
                 "clip": ("CLIP", {"tooltip": "The CLIP model used for encoding the text."}),
-                "posTextA": ("STRING", {
+                "positive_Text_A": ("STRING", {
                     "multiline": True, 
                     "dynamicPrompts": True, 
-                    "tooltip": "The positive text to be encoded.",
-                    "default": "score_9, score_8_up, score_8. score_9, score_8_up, score_7_up, score_6_up, masterpiece, 4k, high quality, "
+                    "tooltip": "First part of the positive text to be encoded.",
+                    "default": "score_9, score_8_up, score_8. score_9, score_8_up, score_7_up, score_6_up, masterpiece, 4k, 8k, high quality, best quality, ultra high res, ultra detailed, 8k wallpaper"
                 }), 
-                "posTextB": ("STRING", {
+                "positive_Text_B": ("STRING", {
                     "multiline": True, 
                     "dynamicPrompts": True, 
-                    "tooltip": "The positive text to be encoded.",
+                    "tooltip": "Second part of the positive text to be encoded.",
                     "default": "1girl, solo, Sakura, pink short hair, green eyes, forehead protector, blushing, looking at viewer, smiling, white dress green background"
                 }), 
-                "stop_at_clip_layer": ("INT", {"default": -2, "min": -24, "max": -1, "step": 1}),
-                "negText": ("STRING", {
+                "stop_at_clip_layer": ("INT", {
+                    "default": -2, "min": -24, "max": -1, "step": 1
+                    }),
+                "negative_Text": ("STRING", {
                     "multiline": True, 
                     "dynamicPrompts": True, 
                     "tooltip": "The negative text to be encoded.",
@@ -35,13 +37,15 @@ class TextEncode3in1:
     OUTPUT_TOOLTIPS = ("A conditioning containing the embedded text used to guide the diffusion model.",)
     FUNCTION = "encode"
     CATEGORY = "MzMaXaM"
-    DESCRIPTION = "Encodes a text prompt using a CLIP model into an embedding that can be used to guide the diffusion model towards generating specific images."
-    def encode(self, clip, posTextA, posTextB, stop_at_clip_layer, negText):
+    DESCRIPTION = ("Encodes a text prompt using a CLIP model into an embedding that can be used to guide the diffusion model towards generating specific images.\n"
+                    "The text prompt is split into two parts, and the CLIP model is used to encode both parts into a single embedding.\n"
+    )
+    def encode(self, clip, positive_Text_A, positive_Text_B, stop_at_clip_layer, negative_Text):
         clip = clip.clone()
         clip.clip_layer(stop_at_clip_layer)
-        posText = posTextA + posTextB
+        posText = positive_Text_A +". <BEAK>\n"+ positive_Text_B
         tokenPos = clip.tokenize(posText)
-        tokenNeg = clip.tokenize(negText)
+        tokenNeg = clip.tokenize(negative_Text)
         posOutput = clip.encode_from_tokens(tokenPos, return_pooled=True, return_dict=True)
         negOutput = clip.encode_from_tokens(tokenNeg, return_pooled=True, return_dict=True)
         posCond = posOutput.pop("cond")

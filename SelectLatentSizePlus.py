@@ -1,8 +1,10 @@
 import re
 import torch  # type: ignore
 import comfy  # type: ignore
-class newLatentAdvanced:
-    # Resolution mapping for the two aspect ratios
+class selectLatentSizePlus:
+    # Resolution mapping for the aspect ratios
+    # I cannot connect the JSON to the aspect ratio in the UI, so I have to hardcode it here
+    # This is a mapping of aspect ratios to their respective resolutions
     resolution_mapping = {
                 "1:1 Square Format": [
                     "512x512",
@@ -48,7 +50,7 @@ class newLatentAdvanced:
                     "768x1152",
                     "832x1280",
                     "896x1344",
-                    "960x1536",
+                    "960x1408",
                     "1024x1536",
                     "1152x1728",
                     "1280x1920"
@@ -74,7 +76,7 @@ class newLatentAdvanced:
                     "1088x1920"
                 ],
                 "7:12 Tall Vista":[
-                     "512x896",
+                    "512x896",
                     "576x1008",
                     "640x1120",
                     "704x1232",
@@ -84,6 +86,7 @@ class newLatentAdvanced:
                     "960x1680"
                 ],
                 "9:16 Smartphone Screen": [
+                    "512x896",
                     "576x1024",
                     "640x1152",
                     "720x1280",
@@ -124,7 +127,9 @@ class newLatentAdvanced:
                 "1:3 Panoramic Photography": [
                     "512x1536",
                     "576x1728",
-                    "640x1920"
+                    "640x1920",
+                    "704x2048",
+                    "768x2176"
                 ],
                 "9:32 Super UltraWide Monitor": [
                     "512x1856",
@@ -172,12 +177,13 @@ class newLatentAdvanced:
     
     RETURN_TYPES = ("LATENT", "INT", "INT")
     RETURN_NAMES = ("Latent", "Width", "Height")
-    OUTPUT_TOOLTIPS = ("Select the resolution and format for a new latent image. Toggle orientation.",)
+    OUTPUT_TOOLTIPS = ("Empty Latent. Width and Height of selected size.",)
     FUNCTION = "generate_latent"
     OUTPUT_NODE = True
-    CATEGORY = "MzMaXaM/WiP"
+    CATEGORY = "MzMaXaM"
     DESCRIPTION = (
-        "Advanced resolution selector for Square Format and Horizontal Portrait photography aspect ratios. "
+        "Resolution selector for different aspect ratios.\n"
+        "Supports 1:1, 4:5, 3:4, 2:3, 7:10, 5:8, 7:12, 9:16, 1:1.85, 1:2, 9:21, 1:3, 9:32, 1:4 and 1:5.\n"
         "Provides curated resolution options for easy selection."
     )
     def generate_latent(self, aspect_ratio, resolution, batch_size, swap_orientation):
@@ -216,12 +222,12 @@ class newLatentAdvanced:
 
         return ({"samples": latent}, width, height)
 # Register the node with ComfyUI.
-NLA_CLASS_MAPPINGS = {
-    "newLatentAdvanced": newLatentAdvanced,
+SLSP_CLASS_MAPPINGS = {
+    "selectLatentSizePlus": selectLatentSizePlus,
 }
-NLA_NAME_MAPPINGS = {
-    "newLatentAdvanced": "Select new latent image Advanced",
+SLSP_NAME_MAPPINGS = {
+    "selectLatentSizePlus": "Select Latent Size Plus",
 }
 # Export WEB_DIRECTORY so ComfyUI serves our JS/HTML resources.
 WEB_DIRECTORY = "./js"
-__all__ = ["NLA_CLASS_MAPPINGS", "NLA_NAME_MAPPINGS", "WEB_DIRECTORY"]
+__all__ = ["SLSP_CLASS_MAPPINGS", "SLSP_NAME_MAPPINGS", "WEB_DIRECTORY"]

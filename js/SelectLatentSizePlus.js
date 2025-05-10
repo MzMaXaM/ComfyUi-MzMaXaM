@@ -1,16 +1,16 @@
 
 import { app } from "../../scripts/app.js"; // Adjust the relative path as needed
 app.registerExtension({
-    name: "newLatentAdvanced_dynamicUI_nodeCreated", // Changed extension name slightly
+    name: "selectLatentSizePlus_dynamicUI", // Changed extension name slightly
     async nodeCreated(node) {
         // Check if the created node is our specific node type
-        if (node.comfyClass === "newLatentAdvanced") {
+        if (node.comfyClass === "selectLatentSizePlus") {
             // Find the aspect_ratio and resolution widgets by their names
             const aspectSelect = node.widgets.find(w => w.name === "aspect_ratio");
             const resolutionSelect = node.widgets.find(w => w.name === "resolution");
             // If widgets are not found (shouldn't happen if INPUT_TYPES is correct, but good check)
             if (!aspectSelect || !resolutionSelect) {
-                console.error("[NewLatentAdvanced] ERROR: Could not find aspect_ratio or resolution widgets on the node.");
+                console.error("[selectLatentSizePlus] ERROR: Could not find aspect_ratio or resolution widgets on the node.");
                 return;
             }
             // Our resolution mapping must mirror the backend mapping exactly.
@@ -59,7 +59,7 @@ app.registerExtension({
                     "768x1152",
                     "832x1280",
                     "896x1344",
-                    "960x1536",
+                    "960x1408",
                     "1024x1536",
                     "1152x1728",
                     "1280x1920"
@@ -95,6 +95,7 @@ app.registerExtension({
                     "960x1680"
                 ],
                 "9:16 Smartphone Screen": [
+                    "512x896",
                     "576x1024",
                     "640x1152",
                     "720x1280",
@@ -135,7 +136,9 @@ app.registerExtension({
                 "1:3 Panoramic Photography": [
                     "512x1536",
                     "576x1728",
-                    "640x1920"
+                    "640x1920",
+                    "704x2048",
+                    "768x2176"
                 ],
                 "9:32 Super UltraWide Monitor": [
                     "512x1856",
@@ -164,7 +167,7 @@ app.registerExtension({
             function updateResolutionOptions() {
               const selectedAspect = aspectSelect.value; // Get value directly from the widget
               const optionsArray = resolutionMapping[selectedAspect] || [];
-              console.log("[NewLatentAdvanced] Options for selected aspect:", optionsArray);
+            // console.log("[selectLatentSizePlus] Options for selected aspect:", optionsArray);
               // Update the widget's options directly
               // The 'options' property on a combo/dropdown widget holds its available values.
               resolutionSelect.options.values = optionsArray;

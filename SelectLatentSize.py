@@ -90,7 +90,7 @@ class SelectLatentSize2Mp:
     OUTPUT_TOOLTIPS = ("Select the empty latent image resolution. And connect it to the Sampler",)
     FUNCTION = "return_size"
     OUTPUT_NODE = True
-    CATEGORY = "MzMaXaM/WiP"
+    CATEGORY = "MzMaXaM"
     DESCRIPTION = "Select size of a new empty latent image to be denoised via sampling. Name (WidthxHeight) resolution."
     def return_size(self, resolution, batch_size):
         match = re.search(r'\((\d+)x(\d+)\)', resolution)
