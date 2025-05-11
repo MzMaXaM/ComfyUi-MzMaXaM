@@ -28,7 +28,8 @@ Added some example workflows, that use my custom nodes, feel free to test them.
 
 
 # 1. Select Latent Size Plus
-Image to be added*
+![image](https://github.com/user-attachments/assets/c291a528-7737-4700-8e3f-bd47cdd6dc97)
+
 
 
 ## Overview
@@ -45,7 +46,7 @@ A custom node for ComfyUI designed to generate an empty latent image at predefin
 4. Generate the latent image.
 
 ## Curently resolutions
-Link to be added*
+[Check here for current resolutions](https://raw.githubusercontent.com/MzMaXaM/ComfyUi-MzMaXaM/refs/heads/main/js/resolutions.json)
 
 
 
