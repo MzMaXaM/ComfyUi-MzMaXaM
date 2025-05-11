@@ -12,7 +12,44 @@ A pack of nodes, to make my life and hopefully your a bit easier.
 
     ComfyUi Manager/ Custom Nodes Manager/ Search for "mzmaxam"
 
-# 1. Select Latent Size Node 1Mp
+
+
+#  Added Example Workflows
+
+## Overview
+Added some example workflows, that use my custom nodes, feel free to test them.
+
+## Usage
+1. Open ComfyUI.
+2. In top left corner find "Workflow" button.
+3. Then press "Browse Templates".
+4. You'll see on the right of the window lists with nodes, locate "comfyui-mzmaxam".
+5. Select one of the workflows.
+
+
+# 1. Select Latent Size Plus
+Image to be added*
+
+
+## Overview
+A custom node for ComfyUI designed to generate an empty latent image at predefined resolutions. This node is useful for initializing images for further processing.
+
+## Features
+- **Predefined Resolutions**: Users can select from a list of common resolutions.
+- **User-Friendly Interface**: Easy to use within the ComfyUI environment.
+
+## Usage
+1. Open ComfyUI.
+2. Add the custom node from the node library.
+3. Select the desired resolution from the provided list.
+4. Generate the latent image.
+
+## Curently resolutions
+Link to be added*
+
+
+
+# 2. Select Latent Size Node 1Mp
 
 ![image](https://github.com/user-attachments/assets/bb81b4a3-06f1-4793-a663-5b70e600e5c7)
 
@@ -50,26 +87,6 @@ A custom node for ComfyUI designed to generate an empty latent image at predefin
 "Smartphone portrait (704x1472) 19x9",
 "Cinema portrait (640x1536) 21x9",
 ```
-
-# 2. Text Encoder 3 in 1
-
-![image](https://github.com/user-attachments/assets/95017521-0be3-4f0d-b162-0f592f3c77aa)
-
-## Overview
-A custom node for ComfyUI designed to use with pony models. It have 2 positive and one negative text encoders.
-2 positives becouse in pony models I always want to keep the scores separate from the prompt.
-2 positive text are concatenated and send over as one conditional.
-
-## Features
-- **2 positive text encoders**: Users can use one for scores while other to change the prompt as they want.
-- **User-Friendly Interface**: Easy to use within the ComfyUI environment.
-
-## Usage
-1. Open ComfyUI.
-2. Add the custom node from the node library.
-3. Insert the prompts.
-4. Select the clip-skip.
-4. Conect outputs to the Sampler.
 
 # 3. Select Latent Size Node 2Mp   #Temporary for testing purposes
 
@@ -109,7 +126,27 @@ A custom node for ComfyUI designed to generate an empty latent image at predefin
 "Cinema portrait (960x2176) 21x9",#0.44
 ```
 
-# 4. Upscale Latent/Image by 1.5
+# 4. Text Encoder 3 in 1
+
+![image](https://github.com/user-attachments/assets/95017521-0be3-4f0d-b162-0f592f3c77aa)
+
+## Overview
+A custom node for ComfyUI designed to use with pony models. It have 2 positive and one negative text encoders.
+2 positives becouse in pony models I always want to keep the scores separate from the prompt.
+2 positive text are concatenated and send over as one conditional.
+
+## Features
+- **2 positive text encoders**: Users can use one for scores while other to change the prompt as they want.
+- **User-Friendly Interface**: Easy to use within the ComfyUI environment.
+
+## Usage
+1. Open ComfyUI.
+2. Add the custom node from the node library.
+3. Insert the prompts.
+4. Select the clip-skip.
+5. Conect outputs to the Sampler.
+
+# 5. Upscale Latent/Image by 1.5
 
 ## Overview
 I created this node for my workflows in which I'm using 16:9 resolution, and 
@@ -126,5 +163,5 @@ That's why I made it :D
 2. Add the custom node from the node library.
 3. Insert the latent image.
 4. Select the amount you want, default is 1.
-4. Connect output to the Sampler.
+5. Connect output to the Sampler.
 
