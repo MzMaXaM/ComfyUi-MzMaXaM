@@ -43,7 +43,7 @@ class TextEncode3in1:
     def encode(self, clip, positive_Text_A, positive_Text_B, stop_at_clip_layer, negative_Text):
         clip = clip.clone()
         clip.clip_layer(stop_at_clip_layer)
-        posText = positive_Text_A +". <BEAK>\n"+ positive_Text_B
+        posText = positive_Text_A +". <BREAK>\n"+ positive_Text_B
         tokenPos = clip.tokenize(posText)
         tokenNeg = clip.tokenize(negative_Text)
         posOutput = clip.encode_from_tokens(tokenPos, return_pooled=True, return_dict=True)
