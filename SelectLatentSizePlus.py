@@ -263,9 +263,11 @@ class selectLatentSizePlus:
 # Register the node with ComfyUI.
 SLSP_CLASS_MAPPINGS = {
     "selectLatentSizePlus": selectLatentSizePlus,
+    "SelectLatentSizePlus": selectLatentSizePlus,
 }
 SLSP_NAME_MAPPINGS = {
     "selectLatentSizePlus": "Select Latent Size Plus",
+    "SelectLatentSizePlus": "Select Latent Size Plus",
 }
 # Export WEB_DIRECTORY so ComfyUI serves our JS/HTML resources.
 WEB_DIRECTORY = "./js"
