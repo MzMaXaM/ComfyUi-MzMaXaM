@@ -2,11 +2,17 @@ import re
 import math
 import torch # type: ignore
 import comfy # type: ignore
+import comfy.model_management # type: ignore
 from typing import Tuple, Dict
 
 class SelectLatentSize1Mp:
     def __init__(self):
-        self.device = comfy.model_management.intermediate_device()
+        pass
+
+    @property
+    def device(self):
+        return comfy.model_management.intermediate_device()
+
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -34,27 +40,35 @@ class SelectLatentSize1Mp:
                 {
                 "default": "Square (1024x1024) 1x1"
                 }),
-                "batch_size": ("INT", {"default": 1, "min": 1, "max": 10}),
+                "batch_size": ("INT", {"default": 1, "min": 1, "max": 4096}),
             },
           }
     RETURN_TYPES = ("LATENT",)
     RETURN_NAMES = ("Latent",)
     OUTPUT_TOOLTIPS = ("Select the empty latent image resolution. And connect it to the Sampler",)
     FUNCTION = "return_size"
-    OUTPUT_NODE = True
     CATEGORY = "MzMaXaM"
     DESCRIPTION = "Select size of a new empty latent image to be denoised via sampling. Name (WidthxHeight) resolution."
-    def return_size(self, resolution, batch_size):
-        match = re.search(r'\((\d+)x(\d+)\)', resolution)
-        a, b = match.groups()
-        width = int(a)
-        height = int(b)
-        latent = torch.zeros([batch_size, 4, height // 8, width // 8], device=self.device)
-        return ({"samples":latent}, )
+    def return_size(self, resolution, batch_size=1):
+        match = re.search(r'\((\d+)\s*[xX*]\s*(\d+)\)', resolution)
+        if match:
+            width = int(match.group(1))
+            height = int(match.group(2))
+        else:
+            width, height = 1024, 1024
+        device = comfy.model_management.intermediate_device()
+        dtype = comfy.model_management.intermediate_dtype() if hasattr(comfy.model_management, "intermediate_dtype") else torch.float32
+        latent = torch.zeros([batch_size, 4, height // 8, width // 8], device=device, dtype=dtype)
+        return ({"samples": latent, "downscale_ratio_spacial": 8}, )
 
 class SelectLatentSize2Mp:
     def __init__(self):
-        self.device = comfy.model_management.intermediate_device()
+        pass
+
+    @property
+    def device(self):
+        return comfy.model_management.intermediate_device()
+
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -82,30 +96,35 @@ class SelectLatentSize2Mp:
                 {
                 "default": "Square (1448x1448) 1x1"
                 }),
-                "batch_size": ("INT", {"default": 1, "min": 1, "max": 10}),
+                "batch_size": ("INT", {"default": 1, "min": 1, "max": 4096}),
             },
           }
     RETURN_TYPES = ("LATENT",)
     RETURN_NAMES = ("Latent",)
     OUTPUT_TOOLTIPS = ("Select the empty latent image resolution. And connect it to the Sampler",)
     FUNCTION = "return_size"
-    OUTPUT_NODE = True
     CATEGORY = "MzMaXaM"
     DESCRIPTION = "Select size of a new empty latent image to be denoised via sampling. Name (WidthxHeight) resolution."
-    def return_size(self, resolution, batch_size):
-        match = re.search(r'\((\d+)x(\d+)\)', resolution)
-        a, b = match.groups()
-        width = int(a)
-        height = int(b)
-        latent = torch.zeros([batch_size, 4, height // 8, width // 8], device=self.device)
-        return ({"samples":latent}, )
+    def return_size(self, resolution, batch_size=1):
+        match = re.search(r'\((\d+)\s*[xX*]\s*(\d+)\)', resolution)
+        if match:
+            width = int(match.group(1))
+            height = int(match.group(2))
+        else:
+            width, height = 1024, 1024
+        device = comfy.model_management.intermediate_device()
+        dtype = comfy.model_management.intermediate_dtype() if hasattr(comfy.model_management, "intermediate_dtype") else torch.float32
+        latent = torch.zeros([batch_size, 4, height // 8, width // 8], device=device, dtype=dtype)
+        return ({"samples": latent, "downscale_ratio_spacial": 8}, )
 
 SLS_CLASS_MAPPINGS = {
+    "SelectLatentSize": SelectLatentSize1Mp,
     "SelectLatentSize1MP": SelectLatentSize1Mp,
     "SelectLatentSize2MP": SelectLatentSize2Mp,
 }
 
 SLS_NAME_MAPPINGS = {
+    "SelectLatentSize": "Select latent size",
     "SelectLatentSize1MP": "Select latent size 1Mp",
     "SelectLatentSize2MP": "Select latent size 2Mp",
 }

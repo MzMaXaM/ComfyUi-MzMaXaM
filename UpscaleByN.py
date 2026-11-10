@@ -1,5 +1,6 @@
 import math
 import comfy # type: ignore
+import comfy.utils # type: ignore
 from typing import Tuple, Dict
 
 def repeat(samples, amount):

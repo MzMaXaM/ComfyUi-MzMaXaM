@@ -3,6 +3,9 @@ import math
 import torch # type: ignore
 import latent_preview # type: ignore
 import comfy # type: ignore
+import comfy.sample # type: ignore
+import comfy.samplers # type: ignore
+import comfy.utils # type: ignore
 from typing import Tuple, Dict
 
 def common_ksampler(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent, denoise=1.0, disable_noise=False, start_step=None, last_step=None, force_full_denoise=False):

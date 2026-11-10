@@ -1,6 +1,7 @@
 import re
 import torch  # type: ignore
 import comfy  # type: ignore
+import comfy.model_management  # type: ignore
 class selectLatentSizePlus:
     # Resolution mapping for the aspect ratios
     # I cannot connect the JSON to the aspect ratio in the UI, so I have to hardcode it here
@@ -189,7 +190,11 @@ class selectLatentSizePlus:
             }
     default_aspect_ratio = "1:1 Square Format"
     def __init__(self):
-        self.device = comfy.model_management.intermediate_device()
+        pass
+
+    @property
+    def device(self):
+        return comfy.model_management.intermediate_device()
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -212,7 +217,6 @@ class selectLatentSizePlus:
     RETURN_NAMES = ("Latent", "Width", "Height")
     OUTPUT_TOOLTIPS = ("Empty Latent. Width and Height of selected size.",)
     FUNCTION = "generate_latent"
-    OUTPUT_NODE = True
     CATEGORY = "MzMaXaM"
     DESCRIPTION = (
         "Resolution selector for different aspect ratios.\n"
@@ -245,7 +249,9 @@ class selectLatentSizePlus:
             height = (height // 8) * 8
             if width == 0: width = 8 # Prevent zero dimension after rounding
             if height == 0: height = 8 # Prevent zero dimension after rounding
-        latent = torch.zeros([batch_size, 4, height // 8, width // 8], device=self.device)
+        device = comfy.model_management.intermediate_device()
+        dtype = comfy.model_management.intermediate_dtype() if hasattr(comfy.model_management, 'intermediate_dtype') else torch.float32
+        latent = torch.zeros([batch_size, 4, height // 8, width // 8], device=device, dtype=dtype)
         # Return the latent, and the *actual* width/height used after potential rounding
 
         # Swap dimensions if requested
@@ -253,13 +259,15 @@ class selectLatentSizePlus:
             latent = latent.permute(0, 1, 3, 2)
             width, height = height, width
 
-        return ({"samples": latent}, width, height)
+        return ({"samples": latent, "downscale_ratio_spacial": 8}, width, height)
 # Register the node with ComfyUI.
 SLSP_CLASS_MAPPINGS = {
     "selectLatentSizePlus": selectLatentSizePlus,
+    "SelectLatentSizePlus": selectLatentSizePlus,
 }
 SLSP_NAME_MAPPINGS = {
     "selectLatentSizePlus": "Select Latent Size Plus",
+    "SelectLatentSizePlus": "Select Latent Size Plus",
 }
 # Export WEB_DIRECTORY so ComfyUI serves our JS/HTML resources.
 WEB_DIRECTORY = "./js"
